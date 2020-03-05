@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  gitURL:
+    Type: String
+  stage:
+    Type: String
+    Default: IT
+  branchOrTag:
+    Type: String
+    Default: master
+Resources:
+  Project:
+    Type: 'AWS::CodeBuild::Project'
+    Properties:
+      Name: !Join [ "_" , [!Join ["_", !Split [ ".", !Select [4, !Split [ "/", !Ref gitURL ]]]], !Ref branchOrTag, "to", !Ref stage]]
+      Description: A description about my project
+      ServiceRole: >-
+        arn:aws:iam::829867751173:role/service-role/codebuild-testlambda-service-role
+      Artifacts:
+        Type: no_artifacts
+      Environment:
+        Type: LINUX_CONTAINER
+        ComputeType: BUILD_GENERAL1_SMALL
+        Image: 'aws/codebuild/amazonlinux2-x86_64-standard:2.0'
+        EnvironmentVariables:
+          - Name: STAGE
+            Value: !Ref stage
+            Type: PLAINTEXT
+      Source:
+        Type: GITHUB
+        Location: !Ref gitURL
+        GitCloneDepth: 1
+        ReportBuildStatus: false
+        InsecureSsl: false
+      SourceVersion: !Ref branchOrTag
+      TimeoutInMinutes: 10
