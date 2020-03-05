@@ -4,7 +4,7 @@
 
 CICD pipeline that will get source from github and execute buildspec.yaml provided in the repo
 
-[<img src="../cloudformation-launch-stack.png">](https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#/stacks/new?stackName=stack_name&templateURL=https://s3-eu-west-1.amazonaws.com/guy.chauliac-cloudformation/cicd_build_from_github_with_buildspec.yaml)
+[<img src="../cloudformation-launch-stack.png">](https://console.aws.amazon.com/cloudformation/home?region=eu-west-2#/stacks/new?stackName=stack_name&templateURL=https://s3-eu-west-1.amazonaws.com/guy.chauliac-cloudformation/cicd/cicd_build_from_github_with_buildspec.yaml)
 
 **Parameters**
 
