@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: 2010-09-09
+yamlAWSTemplateFormatVersion: 2010-09-09
 Parameters:
   applicationName:
     Type: String
